@@ -1,10 +1,23 @@
 .pace {
     display: none;
 }
-
 .main-style {
     min-height: 100vh;
     background: url(../img/cover/cover-scrum-board.png) no-repeat fixed;
     background-size: 360px;
     background-position: right bottom;
+}
+:root{
+    --plusColor: #007274;
+    --buttonGray: #DEE2E6;
+}
+button{
+    border: 0;
+    border-top: solid 1px #949494;
+}
+.btnG:hover{
+    background-color: #bfc3c7 !important;
+}
+.bg-white:hover{
+    background-color: #f0f0f0 !important;
 }
