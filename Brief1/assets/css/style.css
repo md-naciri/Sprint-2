@@ -13,7 +13,7 @@
 }
 button{
     border: 0;
-    border-top: solid 1px #949494;
+    border-top: solid 1px #dee2e6;
 }
 .btnG:hover{
     background-color: #bfc3c7 !important;
@@ -21,8 +21,3 @@ button{
 .bg-white:hover{
     background-color: #f0f0f0 !important;
 }
-/*.modal-dialog {
-    height: 90%; /* = 90% of the .modal-backdrop block = %90 of the screen }*/
-
-/* .modal-content {
-    height: 100%; /* = 100% of the .modal-dialog block }*/
