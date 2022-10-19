@@ -18,6 +18,7 @@ let save = document.getElementById("save");
 let carte = {};
 
 let stock = () => {
+    carte["id"] = 1;
     carte["title"] = title.value;
 
     if (radio1.checked == true) {
@@ -63,7 +64,6 @@ function affichage() {
         if (shortDesc.length > 50) {
         shortDesc = `${shortDesc.substring(0, 50)}...`;
         }
-        console.log("in loop");
         if (task.status == "To Do") {
             toDo.innerHTML +=
        ` 
@@ -74,13 +74,17 @@ function affichage() {
         <div class="text-start ps-2">
             <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="text-secondary">#${task.id} created in ${task.date}</div>
                 <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
                 <span class="btn btn-primary py-1 px-2">${task.priority}</span>
                 <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${task.type}</span>
             </div>
+        </div>
+        <div class = "d-block">
+            <i onclick="deleteTask(this);" class="fa-solid fa-trash fs-4"></i>
+            <i onclick="updateTask();" data-bs-target="#modal-task" data-bs-toggle="modal" class="fa-solid fa-pen-to-square fs-4"></i>
         </div>
         </button>`; 
         } else if (task.status == "In Progress"){
@@ -92,7 +96,7 @@ function affichage() {
         <div class="text-start ps-2">
             <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="text-secondary">#${task.id} created in ${task.date}</div>
                 <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
@@ -110,7 +114,7 @@ function affichage() {
         <div class="text-start ps-2">
             <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="text-secondary">#${task.id} created in ${task.date}</div>
                 <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
@@ -133,15 +137,22 @@ function createTask() {
     // Ouvrir modal form
 
 }
-
+let s=0;
+let r=0;
+let t=0;
 function saveTask() {
     stock();
+    
     tasks[tasks.length] = carte;
     let shortDesc = carte["description"];
     if (shortDesc.length > 50) {
         shortDesc = `${shortDesc.substring(0, 50)}...`;
     }
     if (carte["Status"] == "To Do") {
+        for(let i=0; i<tasks.length; i++){
+            if (tasks[i].status == "To Do") s++;
+            t=r+s;
+        }
         toDo.innerHTML +=
             `<button class="w-100 d-flex bg-white py-2">
         <div class="">
@@ -150,7 +161,7 @@ function saveTask() {
         <div class="text-start ps-2">
             <div class="fw-bolder">${carte["title"]}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${carte["date"]}</div>
+                <div class="text-secondary">#${t+1} created in ${carte["date"]}</div>
                 <div class="" title="${carte["description"]}">${shortDesc}</div>
             </div>
             <div class="">
@@ -159,6 +170,8 @@ function saveTask() {
             </div>
         </div>
         </button>`
+        s=0;
+        r++;
     }
     else if (carte["Status"] == "In Progress") {
         InProgress.innerHTML +=
@@ -216,6 +229,7 @@ function editTask(index) {
 }
 
 function updateTask() {
+
     // GET TASK ATTRIBUTES FROM INPUTS
 
     // Créez task object
@@ -228,14 +242,8 @@ function updateTask() {
 
 }
 
-function deleteTask() {
-    // Get index of task in the array
-
-    // Remove task from array by index splice function
-
-    // close modal form
-
-    // refresh tasks
+function deleteTask(del) {
+    del.parentElement.parentElement.remove();
 }
 
 function initTaskForm() {
