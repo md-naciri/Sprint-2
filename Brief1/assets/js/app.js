@@ -57,69 +57,70 @@ function affichage() {
     toDo.innerHTML = "";
     InProgress.innerHTML = "";
     done.innerHTML = "";
-    for(let task of tasks){
-        console.log(task.title);
-    }
-    for (let i = 0; i < tasks.length; i++) {
+    
+    for (let task of tasks) {
+        let shortDesc = task.description;
+        if (shortDesc.length > 50) {
+        shortDesc = `${shortDesc.substring(0, 50)}...`;
+        }
         console.log("in loop");
-        if (tasks[i].status == "To Do") {
-            console.log("in to do");
+        if (task.status == "To Do") {
             toDo.innerHTML +=
-            `<button class="w-100 d-flex bg-white py-2">
+       ` 
+       <button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
         <div class="text-start ps-2">
-            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
-                <div class="" title="${tasks[i]["description"]}">${tasks[i]["description"]}}</div>
+                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
-                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
-                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+                <span class="btn btn-primary py-1 px-2">${task.priority}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${task.type}</span>
             </div>
         </div>
         </button>`; 
-        } else if (tasks.status == "In Progress"){
+        } else if (task.status == "In Progress"){
             InProgress.innerHTML +=
             `<button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
         <div class="text-start ps-2">
-            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
-                <div class="" title="${tasks[i]["description"]}">${shortDesc}</div>
+                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
-                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
-                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+                <span class="btn btn-primary py-1 px-2">${task.priority}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${task.type}</span>
             </div>
         </div>
         </button>`
-        } else if (tasks.status == "Done"){
+        } else if (task.status == "Done"){
             done.innerHTML +=
             `<button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
         <div class="text-start ps-2">
-            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="fw-bolder">${task.title}</div>
             <div class="">
-                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
-                <div class="" title="${ctasks[i]["description"]}">${shortDesc}</div>
+                <div class="text-secondary">#1 created in ${task.date}</div>
+                <div class="" title="${task.description}">${shortDesc}</div>
             </div>
             <div class="">
-                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
-                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+                <span class="btn btn-primary py-1 px-2">${task.priority}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${task.type}</span>
             </div>
         </div>
         </button>`
         }
     } 
-    console.log("ghty")
 }
 
 affichage();
