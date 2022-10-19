@@ -12,12 +12,12 @@ let date = document.getElementById("date");
 let description = document.getElementById("description");
 let toDo = document.getElementById("to-do");
 let InProgress = document.getElementById("in-progress");
-let save = document.getElementById("save");
 let done = document.getElementById("done");
+let save = document.getElementById("save");
 
 let carte = {};
 
-let stock = ()=>{
+let stock = () => {
     carte["title"] = title.value;
 
     if (radio1.checked == true) {
@@ -50,9 +50,79 @@ let stock = ()=>{
     carte["date"] = date.value;
 
     carte["description"] = description.value;
-} 
+}
 
 
+function affichage() {
+    toDo.innerHTML = "";
+    InProgress.innerHTML = "";
+    done.innerHTML = "";
+    for(let task of tasks){
+        console.log(task.title);
+    }
+    for (let i = 0; i < tasks.length; i++) {
+        console.log("in loop");
+        if (tasks[i].status == "To Do") {
+            console.log("in to do");
+            toDo.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
+        <div class="">
+            <i class="fa-regular fa-circle-question text-green"></i>
+        </div>
+        <div class="text-start ps-2">
+            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="">
+                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
+                <div class="" title="${tasks[i]["description"]}">${tasks[i]["description"]}}</div>
+            </div>
+            <div class="">
+                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+            </div>
+        </div>
+        </button>`; 
+        } else if (tasks.status == "In Progress"){
+            InProgress.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
+        <div class="">
+            <i class="fa-regular fa-circle-question text-green"></i>
+        </div>
+        <div class="text-start ps-2">
+            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="">
+                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
+                <div class="" title="${tasks[i]["description"]}">${shortDesc}</div>
+            </div>
+            <div class="">
+                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+            </div>
+        </div>
+        </button>`
+        } else if (tasks.status == "Done"){
+            done.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
+        <div class="">
+            <i class="fa-regular fa-circle-question text-green"></i>
+        </div>
+        <div class="text-start ps-2">
+            <div class="fw-bolder">${tasks[i]["title"]}</div>
+            <div class="">
+                <div class="text-secondary">#1 created in ${tasks[i]["date"]}</div>
+                <div class="" title="${ctasks[i]["description"]}">${shortDesc}</div>
+            </div>
+            <div class="">
+                <span class="btn btn-primary py-1 px-2">${tasks[i]["Priority"]}</span>
+                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${tasks[i]["type"]}</span>
+            </div>
+        </div>
+        </button>`
+        }
+    } 
+    console.log("ghty")
+}
+
+affichage();
 
 function createTask() {
     // initialiser task form
@@ -60,19 +130,19 @@ function createTask() {
     // Afficher le boutton save
 
     // Ouvrir modal form
-    
+
 }
 
 function saveTask() {
     stock();
     tasks[tasks.length] = carte;
     let shortDesc = carte["description"];
-    if (shortDesc.length>50) {
-        shortDesc = `${shortDesc.substring(0,50)}...`;
+    if (shortDesc.length > 50) {
+        shortDesc = `${shortDesc.substring(0, 50)}...`;
     }
     if (carte["Status"] == "To Do") {
-        toDo.innerHTML += 
-        `<button class="w-100 d-flex bg-white py-2">
+        toDo.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
@@ -90,8 +160,8 @@ function saveTask() {
         </button>`
     }
     else if (carte["Status"] == "In Progress") {
-        InProgress.innerHTML += 
-        `<button class="w-100 d-flex bg-white py-2">
+        InProgress.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
@@ -109,8 +179,8 @@ function saveTask() {
         </button>`
     }
     else if (carte["Status"] == "Done") {
-        done.innerHTML += 
-        `<button class="w-100 d-flex bg-white py-2">
+        done.innerHTML +=
+            `<button class="w-100 d-flex bg-white py-2">
         <div class="">
             <i class="fa-regular fa-circle-question text-green"></i>
         </div>
@@ -154,7 +224,7 @@ function updateTask() {
     // Fermer Modal form
 
     // Refresh tasks
-    
+
 }
 
 function deleteTask() {
