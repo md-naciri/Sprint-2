@@ -9,6 +9,7 @@ const description = document.querySelector("#description");
 const toDo = document.querySelector("#to-do");
 const inProgress = document.querySelector("#in-progress");
 const done = document.querySelector("#done");
+let modalFooter=document.querySelector(".modal-footer")
 let toDoCount = document.querySelector("#toDoCount");
 let inProgressCount = document.querySelector("#inProgressCount");
 let doneCount = document.querySelector("#doneCount");
@@ -20,8 +21,9 @@ function initTaskForm() {
     done.innerHTML = "";
     let tod = 0;
     let inp = 0;
-    let doe = 0;
+    let doe = 0,c=0;
     for (let card of tasks) {
+
         let shortDesc = card.description;
         if (shortDesc.length > 65) {
         shortDesc = `${shortDesc.substring(0, 65)}...`;
@@ -30,65 +32,82 @@ function initTaskForm() {
             tod++;
             toDo.innerHTML +=
        ` 
-       <button class="w-100 d-flex bg-white py-2">
+        <button class="w-100 d-flex bg-white py-2 justify-content-between">
+            <div class="d-flex">
+                <div class="">
+                    <i class="fa-regular fa-circle-question text-green"></i>
+                </div>
+                <div class="text-start ps-2">
+                    <div class="fw-bolder">${card.title}</div>
+                    <div class="">
+                        <div class="text-secondary">#${c+1} Created in ${card.date}</div>
+                        <div class="" title="${card.description}">${shortDesc}</div>
+                    </div>
+                    <div class="">
+                        <span class="btn btn-primary py-1 px-2">${card.priority}</span>
+                        <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
+                    </div>
+                </div>
+            </div>
             <div class="">
-                <i class="fa-regular fa-circle-question text-green"></i>
+                <i onclick="deleteTask(${c});" class="mb-2 d-block fa-regular fa-x text-red deleteX"></i>
+                <i onclick="updateTask(${c});" class="fa-solid fa-pencil"></i>
             </div>
-            <div class="text-start ps-2">
-                <div class="fw-bolder">${card.title}</div>
-                <div class="">
-                    <div class="text-secondary">#${card.id+1} Created in ${card.date}</div>
-                    <div class="" title="${card.description}">${shortDesc}</div>
-                </div>
-                <div class="">
-                    <span class="btn btn-primary py-1 px-2">${card.priority}</span>
-                    <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
-                </div>
-            </div>
-            <i onclick="deleteTask(${card.id});" class="fa-regular fa-x text-red deleteX"></i>
-            <i onclick="editTask(${card.id});" class="fa-solid fa-pencil"></i>
         </button>`; 
         } else if (card.status === "In Progress"){
             inp++;
             inProgress.innerHTML +=
-            `<button class="w-100 d-flex bg-white py-2">
-        <div class="">
-            <i class="fa-regular fa-circle-question text-green"></i>
-        </div>
-        <div class="text-start ps-2">
-            <div class="fw-bolder">${card.title}</div>
-            <div class="">
-                <div class="text-secondary">#${card.id+1} Created in ${card.date}</div>
-                <div class="" title="${card.description}">${shortDesc}</div>
-            </div>
-            <div class="">
-                <span class="btn btn-primary py-1 px-2">${card.priority}</span>
-                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
-            </div>
-        </div>
-        <i onclick="deleteTask(${card.id});" class="fa-regular fa-x text-red deleteX"></i>
-        </button>`
+            ` 
+            <button class="w-100 d-flex bg-white py-2 justify-content-between">
+                <div class="d-flex">
+                    <div class="">
+                        <i class="fa-regular fa-circle-question text-green"></i>
+                    </div>
+                    <div class="text-start ps-2">
+                        <div class="fw-bolder">${card.title}</div>
+                        <div class="">
+                            <div class="text-secondary">#${c+1} Created in ${card.date}</div>
+                            <div class="" title="${card.description}">${shortDesc}</div>
+                        </div>
+                        <div class="">
+                            <span class="btn btn-primary py-1 px-2">${card.priority}</span>
+                            <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <i onclick="deleteTask(${c});" class="mb-2 d-block fa-regular fa-x text-red deleteX"></i>
+                    <i onclick="updateTask(${c});" class="fa-solid fa-pencil"></i>
+                </div>
+            </button>`; 
         } else if (card.status === "Done"){
             doe++;
             done.innerHTML +=
-            `<button class="w-100 d-flex bg-white py-2">
-        <div class="">
-            <i class="fa-regular fa-circle-question text-green"></i>
-        </div>
-        <div class="text-start ps-2">
-            <div class="fw-bolder">${card.title}</div>
-            <div class="">
-                <div class="text-secondary">#${card.id+1} Created in ${card.date}</div>
-                <div class="" title="${card.description}">${shortDesc}</div>
-            </div>
-            <div class="">
-                <span class="btn btn-primary py-1 px-2">${card.priority}</span>
-                <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
-            </div>
-        </div>
-        <i onclick="deleteTask(${card.id});" class="fa-regular fa-x text-red deleteX"></i>
-        </button>`
+            ` 
+            <button class="w-100 d-flex bg-white py-2 justify-content-between">
+                <div class="d-flex">
+                    <div class="">
+                        <i class="fa-regular fa-circle-question text-green"></i>
+                    </div>
+                    <div class="text-start ps-2">
+                        <div class="fw-bolder">${card.title}</div>
+                        <div class="">
+                            <div class="text-secondary">#${c+1} Created in ${card.date}</div>
+                            <div class="" title="${card.description}">${shortDesc}</div>
+                        </div>
+                        <div class="">
+                            <span class="btn btn-primary py-1 px-2">${card.priority}</span>
+                            <span class="btnG btn py-1 px-2" style="background-color: var(--buttonGray)">${card.type}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <i onclick="deleteTask(${c});" class="mb-2 d-block fa-regular fa-x text-red deleteX"></i>
+                    <i onclick="updateTask(${c});" class="fa-solid fa-pencil"></i>
+                </div>
+            </button>`; 
         }
+        c++;
     }
     toDoCount.innerHTML = tod;
     inProgressCount.innerHTML = inp;
@@ -98,13 +117,15 @@ initTaskForm();
 
 function createTask() {
     $("#modal-task").modal("show");
+    reloadTasks();
+    modalFooter.innerHTML=` <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button id="save" onclick="saveTask();" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>`
 }
 
 
 function saveTask() {
  
     card = {
-        'id'            :   tasks.length,
         'title'         :   title.value,
         'type'          :   '',
         'priority'      :   selection1.value,
@@ -120,35 +141,22 @@ function saveTask() {
     }
     tasks.push(card);
     initTaskForm();
-    reloadTasks();
+    
 
 }
 
 
 function deleteTask(delCard) {
-    tasks = tasks.filter(function(card){
-        return card.id != delCard;
-    })
+    tasks.splice(delCard,1)
+
     initTaskForm();
 }
 
 function editTask(index) {
     
-    title.value = tasks[index].title;
-    description.value = tasks[index].description;
-    date.value = tasks[index].date;
-    if (tasks[index].type == "Feature") {
-        radio1.checked = true;
-    }
-    else {
-        radio2.checked = true;
-    }
-    selection1.value = tasks[index].priority;
-    selection2.value = tasks[index].status;
-    createTask();
-    save.addEventListener("click", ()=> {
+   
+   
        let card = {
-            'id'            :   index+1,
             'title'         :   title.value,
             'type'          :   '',
             'priority'      :   selection1.value,
@@ -165,20 +173,25 @@ function editTask(index) {
 
     tasks[index] = card;
     initTaskForm();
-    });
+    
 }
 
-function updateTask() {
-    // GET TASK ATTRIBUTES FROM INPUTS
+function updateTask(index) {
+    $("#modal-task").modal("show");
+    title.value = tasks[index].title;
+    description.value = tasks[index].description;
+    date.value = tasks[index].date;
+    if (tasks[index].type == "Feature") {
+        radio1.checked = true;
+    }
+    else {
+        radio2.checked = true;
+    }
+    selection1.value = tasks[index].priority;
+    selection2.value = tasks[index].status;
+    modalFooter.innerHTML=` <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button id="save" onclick="editTask(${index});" type="button" class="btn btn-primary" data-bs-dismiss="modal">Update</button>`
 
-    // Créez task object
-
-    // Remplacer ancienne task par nouvelle task
-
-    // Fermer Modal form
-
-    // Refresh tasks
-    
 }
 
 

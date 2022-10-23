@@ -14,7 +14,7 @@
 button{
     border: 0;
     border-top: solid 1px #dee2e6;
-    position: relative;
+    /* position: relative; */
 }
 .btnG:hover{
     background-color: #bfc3c7 !important;
@@ -22,8 +22,8 @@ button{
 .bg-white:hover{
     background-color: #f0f0f0 !important;
 }
-.deleteX{
+/* .deleteX{
     position: absolute;
     right: 2%;
     top: 15%;
-}
+} */
