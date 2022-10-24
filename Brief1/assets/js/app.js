@@ -9,24 +9,25 @@ const description = document.querySelector("#description");
 const toDo = document.querySelector("#to-do");
 const inProgress = document.querySelector("#in-progress");
 const done = document.querySelector("#done");
-let modalFooter=document.querySelector(".modal-footer")
+const modalFooter=document.querySelector(".modal-footer")
 let toDoCount = document.querySelector("#toDoCount");
 let inProgressCount = document.querySelector("#inProgressCount");
 let doneCount = document.querySelector("#doneCount");
 const form = document.querySelector("#form");
 const save = document.querySelector("#save");
+
 function initTaskForm() {
     toDo.innerHTML = "";
     inProgress.innerHTML = "";
     done.innerHTML = "";
     let tod = 0;
     let inp = 0;
-    let doe = 0,c=0;
+    let doe = 0;
+    let c=0;
     for (let card of tasks) {
-
         let shortDesc = card.description;
-        if (shortDesc.length > 65) {
-        shortDesc = `${shortDesc.substring(0, 65)}...`;
+        if (shortDesc.length > 70) {
+        shortDesc = `${shortDesc.substring(0, 70)}...`;
         }
         if (card.status === "To Do") {
             tod++;
@@ -61,7 +62,7 @@ function initTaskForm() {
             <button class="w-100 d-flex bg-white py-2 justify-content-between">
                 <div class="d-flex">
                     <div class="">
-                        <i class="fa-regular fa-circle-question text-green"></i>
+                        <i class="fa fa-circle-notch text-green"></i>
                     </div>
                     <div class="text-start ps-2">
                         <div class="fw-bolder">${card.title}</div>
@@ -87,7 +88,7 @@ function initTaskForm() {
             <button class="w-100 d-flex bg-white py-2 justify-content-between">
                 <div class="d-flex">
                     <div class="">
-                        <i class="fa-regular fa-circle-question text-green"></i>
+                        <i class="fa-regular fa-circle-check text-green"></i>
                     </div>
                     <div class="text-start ps-2">
                         <div class="fw-bolder">${card.title}</div>
@@ -122,9 +123,7 @@ function createTask() {
     <button id="save" onclick="saveTask();" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>`
 }
 
-
 function saveTask() {
- 
     card = {
         'title'         :   title.value,
         'type'          :   '',
@@ -141,39 +140,31 @@ function saveTask() {
     }
     tasks.push(card);
     initTaskForm();
-    
-
 }
 
 
 function deleteTask(delCard) {
     tasks.splice(delCard,1)
-
     initTaskForm();
 }
 
 function editTask(index) {
-    
-   
-   
-       let card = {
-            'title'         :   title.value,
-            'type'          :   '',
-            'priority'      :   selection1.value,
-            'status'        :   selection2.value,
-            'date'          :   date.value,
-            'description'   :   description.value,
-        }
-        if (radio1.checked == true) {
-            card["type"] = "Feature";
-        }
-        else {
-            card["type"] = "Bug";
-        }
-
+    let card = {
+        'title'         :   title.value,
+        'type'          :   '',
+        'priority'      :   selection1.value,
+        'status'        :   selection2.value,
+        'date'          :   date.value,
+        'description'   :   description.value,
+    }
+    if (radio1.checked == true) {
+        card["type"] = "Feature";
+    }
+    else {
+        card["type"] = "Bug";
+    }
     tasks[index] = card;
     initTaskForm();
-    
 }
 
 function updateTask(index) {
@@ -191,10 +182,7 @@ function updateTask(index) {
     selection2.value = tasks[index].status;
     modalFooter.innerHTML=` <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
     <button id="save" onclick="editTask(${index});" type="button" class="btn btn-primary" data-bs-dismiss="modal">Update</button>`
-
 }
-
-
 
 function reloadTasks() {
     form.reset();
