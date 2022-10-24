@@ -142,7 +142,6 @@ function saveTask() {
     initTaskForm();
 }
 
-
 function deleteTask(delCard) {
     tasks.splice(delCard,1)
     initTaskForm();
