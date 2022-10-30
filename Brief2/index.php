@@ -266,7 +266,7 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks";
+								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
 								$result = mysqli_query(connect(), $sql);
 								$icon = 'far fa-question-circle';
 								if (mysqli_num_rows($result) > 0) {
@@ -296,7 +296,7 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks";
+								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
 								$result = mysqli_query(connect(), $sql);
 								$icon = 'fas fa-circle-notch fa-spin';
 								if (mysqli_num_rows($result) > 0) {
@@ -326,7 +326,7 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="done-tasks">
 							<!-- DONE TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks";
+								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
 								$result = mysqli_query(connect(), $sql);
 								$icon = 'far fa-circle-check';
 								if (mysqli_num_rows($result) > 0) {

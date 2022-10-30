@@ -13,23 +13,24 @@
     function getTasks($row, $icon)
     {
         echo '
-        <a href="update.php?id='. $row["id"].'">
-        <button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+        <form action="update.php" method="post">
+        <button  type="submit" class="list-group-item list-group-item-action d-flex">
             <div class="me-3 fs-16px">
                 <i class="' . $icon. ' text-green fa-fw"></i> 
             </div>
             <div class="flex-fill">
-                <div class="fs-14px lh-12 mb-2px fw-bold text-dark">' . $row["title"]. '</div>
+            <input type="hidden" name="identify" value="' . $row["id"]. '">
+                <div  class="fs-14px lh-12 mb-2px fw-bold text-dark" >' . $row["title"]. '</div>
                 <div class="mb-1 fs-12px">
                     <div class="text-gray-600 flex-1">#' . $row["id"]. ' created in ' . $row["task_datetime"]. '</div>
                     <div class="text-gray-900 flex-1" title="' . $row["description"]. '">' . $row["description"]. '</div>
                 </div>
                 <div class="mb-1">
-                    <span class="badge bg-primary">' . $row["priority_id"]. '</span>
-                    <span class="badge bg-gray-300 text-gray-900">' . $row["type_id"]. '</span>
+                    <span class="badge bg-primary">' . $row["p_name"]. '</span>
+                    <span class="badge bg-gray-300 text-gray-900">' . $row["name"]. '</span>
                 </div>
             </div>
-        </button></a>
+        </button></form>
         ';
     }
 
