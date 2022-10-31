@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 <?php 
-    include('database.php');
+    include('scripts.php');
     @$idf=$_POST["identify"];
     @$sql = "SELECT * FROM tasks WHERE id = '$idf' ";
     @$result=mysqli_query(connect(), $sql);
@@ -23,7 +24,7 @@
 					
             <div class="modal-body">
                 <!-- This Input Allows Storing Task Index  -->
-                <input type="text" name="id" id="task-id" value="<?php echo $idf ?>">
+                <input type="hidden" name="id" id="task-id" value="<?php echo $idf ?>">
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input name="title" type="text" class="form-control" id="task-title" value="<?php echo @$row["title"] ?>"/>
@@ -63,7 +64,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Date</label>
-                    <input name = "date" type="datetime" class="form-control" id="task-date" value="<?php echo @$row["task_datetime"] ?>"/>
+                    <input name = "date" type="datetime-local" class="form-control" id="task-date" value="<?php echo @$row["task_datetime"] ?>"/>
                 </div>
                 <div class="mb-0">
                     <label class="form-label">Description</label>
@@ -72,7 +73,7 @@
                 
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                <a href="index.php" class="btn btn-white">Cancel</a>
                 <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
                 <button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
             </div>
@@ -80,19 +81,17 @@
         <div class="col-4"></div>  
 	</div>
 	<?php 
-        @$id= $_POST["id"];
-        @$title= $_POST["title"];
-        @$description= $_POST["description"];
-        @$date= $_POST["date"];
-        @$priority= $_POST["priority"];
-        @$status= $_POST["status"];
-        @$type=$_POST["task-type"];
+        // @$id= $_POST["id"];
+        // @$title= $_POST["title"];
+        // @$description= $_POST["description"];
+        // @$date= $_POST["date"];
+        // @$priority= $_POST["priority"];
+        // @$status= $_POST["status"];
+        // @$type=$_POST["task-type"];
 
-        if(isset($_POST['update'])) {
-            $update= "UPDATE tasks SET title = '$title', description = '$description', task_datetime = '$date', type_id = '$type', priority_id = '$priority', status_id = '$status' WHERE id='$id' ";
-            mysqli_query(connect(), $update);
-            header('location: index.php');
-        }
+        // if(isset($_POST['update'])) {
+
+        // }
     ?>
 </body>
 </html>

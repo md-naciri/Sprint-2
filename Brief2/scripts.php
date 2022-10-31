@@ -55,16 +55,24 @@
 
     function updateTask()
     {
-        //CODE HERE
-        //SQL UPDATE
+        @$id= $_POST["id"];
+        @$title= $_POST["title"];
+        @$description= $_POST["description"];
+        @$date= $_POST["date"];
+        @$priority= $_POST["priority"];
+        @$status= $_POST["status"];
+        @$type=$_POST["task-type"];
+        $update= "UPDATE tasks SET title = '$title', description = '$description', task_datetime = '$date', type_id = '$type', priority_id = '$priority', status_id = '$status' WHERE id='$id' ";
+        mysqli_query(connect(), $update);
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
     }
 
     function deleteTask()
     {
-        //CODE HERE
-        //SQL DELETE
+        @$id= $_POST["id"];
+        $delete= "DELETE FROM tasks WHERE id='$id' ";
+        mysqli_query(connect(), $delete);
         $_SESSION['message'] = "Task has been deleted successfully !";
 		header('location: index.php');
     }
