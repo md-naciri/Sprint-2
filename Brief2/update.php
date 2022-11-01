@@ -74,24 +74,11 @@
             </div>
             <div class="modal-footer">
                 <a href="index.php" class="btn btn-white">Cancel</a>
-                <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
+                <button type="submit" onclick = "return confirm('Are you sure you want to delete this task?')" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
                 <button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
             </div>
 		</form> 
         <div class="col-4"></div>  
 	</div>
-	<?php 
-        // @$id= $_POST["id"];
-        // @$title= $_POST["title"];
-        // @$description= $_POST["description"];
-        // @$date= $_POST["date"];
-        // @$priority= $_POST["priority"];
-        // @$status= $_POST["status"];
-        // @$type=$_POST["task-type"];
-
-        // if(isset($_POST['update'])) {
-
-        // }
-    ?>
 </body>
 </html>
