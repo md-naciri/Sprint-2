@@ -9,7 +9,7 @@
 	<title>YouCode | Scrum Board</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
-	<meta content="" name="Med Naciri" />
+	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -43,7 +43,7 @@
 				<div class="navbar-item navbar-form">
 					<form action="" method="POST" name="search">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="A search that doesn't search " />
+							<input type="text" class="form-control" placeholder="Enter keyword" />
 							<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
 						</div>
 					</form>
@@ -115,7 +115,7 @@
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
 						<img src="assets/img/user/user-13.jpg" alt="" /> 
 						<span>
-							<span class="d-none d-md-inline">Med NACIRI</span>
+							<span class="d-none d-md-inline">Med Naciri</span>
 							<b class="caret"></b>
 						</span>
 					</a>
@@ -151,7 +151,7 @@
 							<div class="menu-profile-info">
 								<div class="d-flex align-items-center">
 									<div class="flex-grow-1">
-										Med NACIRI
+										Med Naciri
 									</div>
 									<div class="menu-caret ms-auto"></div>
 								</div>
@@ -255,7 +255,7 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">To do (<span id="to-do-tasks-count"><?php counting(1); ?></span>)</h4>
+							<h4 class="panel-title">To do (<span id="to-do-tasks-count"><?php counter(1); ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -266,18 +266,7 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
-								$result = mysqli_query(connect(), $sql);
-								$icon = 'far fa-question-circle';
-								if (mysqli_num_rows($result) > 0) {
-									while ($row = mysqli_fetch_assoc($result)) {
-										if ($row["status_id"]==1) getTasks($row, $icon);
-									}
-								} else {
-									echo "0 results";
-								}
-						
-								mysqli_close(connect());
+								getTasks(1);
 							?>
 						</div>
 					</div>
@@ -285,7 +274,7 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count"><?php counting(2); ?></span>)</h4>
+							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count"><?php counter(2); ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -296,18 +285,19 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="in-progress-tasks">
 							<!-- IN PROGRESS TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
-								$result = mysqli_query(connect(), $sql);
-								$icon = 'fas fa-circle-notch fa-spin';
-								if (mysqli_num_rows($result) > 0) {
-									while ($row = mysqli_fetch_assoc($result)) {
-										if ($row["status_id"]==2) getTasks($row, $icon);
-									}
-								} else {
-									echo "0 results";
-								}
+								getTasks(2);
+								// $sql = "SELECT * FROM tasks";
+								// $result = mysqli_query($connect, $sql);
+								// $icon = 'fas fa-circle-notch fa-spin';
+								// if (mysqli_num_rows($result) > 0) {
+								// 	while ($tasks = mysqli_fetch_assoc($result)) {
+								// 		if ($tasks["Status_id"]==2) getTasks($tasks, $icon);
+								// 	}
+								// } else {
+								// 	echo "0 results";
+								// }
 						
-								mysqli_close(connect());
+								// mysqli_close($connect);
 							?>
 						</div>
 					</div>
@@ -315,7 +305,7 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">Done (<span id="done-tasks-count"><?php counting(3); ?></span>)</h4>
+							<h4 class="panel-title">Done (<span id="done-tasks-count"><?php counter(3); ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -326,18 +316,19 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="done-tasks">
 							<!-- DONE TASKS HERE -->
 							<?php
-								$sql = "SELECT * FROM tasks JOIN types ON tasks.type_id=types.t_id JOIN priorities ON tasks.priority_id=priorities.p_id";
-								$result = mysqli_query(connect(), $sql);
-								$icon = 'far fa-circle-check';
-								if (mysqli_num_rows($result) > 0) {
-									while ($row = mysqli_fetch_assoc($result)) {
-										if ($row["status_id"]==3) getTasks($row, $icon);
-									}
-								} else {
-									echo "0 results";
-								}
+								getTasks(3);
+								// $sql = "SELECT * FROM tasks";
+								// $result = mysqli_query($connect, $sql);
+								// $icon = 'far fa-circle-check';
+								// if (mysqli_num_rows($result) > 0) {
+								// 	while ($tasks = mysqli_fetch_assoc($result)) {
+								// 		if ($tasks["Status_id"]==3) getTasks($tasks, $icon);
+								// 	}
+								// } else {
+								// 	echo "0 results";
+								// }
 						
-								mysqli_close(connect());
+								// mysqli_close($connect);
 							?>
 						</div>
 					</div>
@@ -367,17 +358,17 @@
 							<input type="hidden" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input name = "title" type="text" class="form-control" id="task-title"/>
+								<input type="text" name="title" class="form-control" id="task-title"/>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-feature"/>
+										<input class="form-check-input" name="type" type="radio" value="1" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-bug"/>
+										<input class="form-check-input" name="type" type="radio" value="2" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -385,7 +376,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select name= "priority" class="form-select" id="task-priority">
+								<select class="form-select" name="priority" id="task-priority">
 									<option value="">Please select</option>
 									<option value="1">Low</option>
 									<option value="2">Medium</option>
@@ -395,7 +386,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
-								<select name = "status" class="form-select" id="task-status">
+								<select class="form-select" name="status" id="task-status">
 									<option value="">Please select</option>
 									<option value="1">To Do</option>
 									<option value="2">In Progress</option>
@@ -404,18 +395,16 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input name = "date" type="datetime-local" class="form-control" id="task-date"/>
+								<input type="datetime-local" name="date" class="form-control" id="task-date"/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea name = "description" class="form-control" rows="10" id="task-description"></textarea>
+								<textarea class="form-control" rows="10" name="description" id="task-description"></textarea>
 							</div>
 						
 					</div>
 					<div class="modal-footer">
 						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-						<!-- <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
-						<button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a> -->
 						<button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
 					</div>
 				</form>
