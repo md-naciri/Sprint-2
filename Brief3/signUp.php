@@ -10,16 +10,19 @@
                 <div class="col-2"></div>
                 <div class="col-8 ">
                     <h1 class="text-center mar">Welcome to Origin Gamer</h1>
-                    <label for="inputName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control mar" id="inputName" placeholder="Enter your Full Name">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control mar" id="inputEmail4" placeholder="Enter your Email here">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control mar" id="inputPassword4" placeholder="Enter your Password">
-                    <div class="text-center">
-                        <button class="login-button">Create Account</button>
-                        <p>Already have an account?&nbsp;<a href="logIn.php">Log in</a></p>
-                    </div>
+                    <form action="scripts.php" method="POST">
+                        <label for="inputName" class="form-label">Full Name</label>
+                        <input name="name" type="text" class="form-control mar" id="inputName" placeholder="Enter your Full Name">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control mar" id="inputEmail4" placeholder="Enter your Email here">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input name="password" type="password" class="form-control mar" id="inputPassword4" placeholder="Enter your Password">
+                        <div class="text-center">
+                            <button type="submit" name="save" class="login-button">Create Account</button>
+                            <p>Already have an account?&nbsp;<a href="logIn.php">Log in</a></p>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="col-2"></div>
             </div>

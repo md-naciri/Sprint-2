@@ -13,14 +13,17 @@
                 <div class="col-2"></div>
                 <div class="col-8 ">
                     <h1 class="text-center mar">Welcome to Origin Gamer</h1>
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control mar" id="inputEmail4" placeholder="Enter your Email here">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control mar" id="inputPassword4" placeholder="Enter your Password">
-                    <div class="text-center">
-                        <button class="login-button">Log in</button>
-                        <p>Or create account?&nbsp;<a href="signUp.php">Sign up</a></p>
-                    </div>
+                    <form action="scripts.php" method="POST">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control mar" id="inputEmail4" placeholder="Enter your Email here">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input name="password" type="password" class="form-control mar" id="inputPassword4" placeholder="Enter your Password">
+                        <div class="text-center">
+                            <button type="submit" name="log-in" class="login-button">Log in</button>
+                            <p>Or create account?&nbsp;<a href="signUp.php">Sign up</a></p>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="col-2"></div>
             </div>
