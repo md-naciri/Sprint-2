@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <?php 
  include('head.php');
@@ -14,18 +13,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="font-weight-bold nav-link" style="color: #007074;" href="logIn.php"><strong>Log in</strong></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" style="color: #007074;" href="signUp.php"><strong>Create account</strong></a>
+                    <a class="nav-link" style="color: #007074;" href="#"><strong>Log out</strong></a>
                   </li>
                 </ul>
               </div>
           </div>
         </div>
       </nav>
-      <div class="px-3 pb-4 text-center img-home">
-        <img src="img/home.jpg" class="rounded img-fluid" alt="Home image">
+      <div class="px-3 pb-4 text-center">
+        
       </div>
 </body>
 </html>

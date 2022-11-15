@@ -17,3 +17,15 @@ input{
     border:none !important;
     border-radius: 0 !important;
 }
+.mar{
+    margin-bottom: 3rem !important;
+}
+.log-image img{
+    height: 100vh !important;
+}
+body{
+    overflow: hidden;
+}
+.img-home img{
+    height: 90vh;
+}
