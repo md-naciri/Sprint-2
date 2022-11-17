@@ -1,3 +1,41 @@
+
+body{
+    font-family: 'Poppins',Arial, sans-serif;
+    background: #f8f9fd;
+}
+.table{
+	background: white;
+	box-shadow: 0px 20px 48px -48px rgba(0,0,0,0.29);
+    margin-bottom: 1rem;
+}
+.thead{
+    background-color: #343a40;
+    color: white;
+}
+.thead tr th{
+    padding: 2%;
+}
+.thead th{
+    font-weight: normal;
+}
+tbody td {
+    border: none;
+    padding:30px;
+    background: white;
+    border-bottom: 5px solid #f8f9fd;
+    vertical-align: middle;
+}
+tbody tr td img{
+    width: 100px;
+    border-radius: 3%;
+}
+.description span{
+    display: block;
+}
+.description span:last-child{
+    font-size: 15px;
+    color: rgba(0,0,0,.3);
+}
 .login-button {
     background-color: #007074; 
     border: none;
@@ -10,7 +48,7 @@
   }
 a{
     text-decoration: none;
-    color: #007074;
+    color: #007074 !important;
 }
 input{
     background-color: #EFF0F2 !important;
@@ -22,9 +60,6 @@ input{
 }
 .log-image img{
     height: 100vh !important;
-}
-body{
-    overflow: hidden;
 }
 .img-home img{
     height: 90vh;

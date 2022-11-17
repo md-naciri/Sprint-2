@@ -6,7 +6,7 @@
     ?>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body style="overflow: hidden;">
     <div class="row">
         <div class="col-5 log-image">
             <img class="w-100" src="../assets/img/logIn.jpg" alt="">
