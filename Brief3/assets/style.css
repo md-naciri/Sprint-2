@@ -3,38 +3,23 @@ body{
     font-family: 'Poppins',Arial, sans-serif;
     background: #f8f9fd;
 }
-.table{
-	background: white;
-	box-shadow: 0px 20px 48px -48px rgba(0,0,0,0.29);
-    margin-bottom: 1rem;
+thead th{
+    text-align: center;
 }
-.thead{
-    background-color: #343a40;
-    color: white;
+tbody td{
+    text-align: center;
 }
-.thead tr th{
-    padding: 2%;
-}
-.thead th{
-    font-weight: normal;
-}
-tbody td {
-    border: none;
-    padding:30px;
-    background: white;
-    border-bottom: 5px solid #f8f9fd;
-    vertical-align: middle;
-}
-tbody tr td img{
+tbody img{
     width: 100px;
     border-radius: 3%;
 }
-.description span{
-    display: block;
+.btn-add-color{
+    color: #EFF0F2;
+    background-color: #007074;
 }
-.description span:last-child{
-    font-size: 15px;
-    color: rgba(0,0,0,.3);
+.btn-delete-color{
+    color: #EFF0F2;
+    background-color: #721830;
 }
 .login-button {
     background-color: #007074; 
@@ -50,17 +35,46 @@ a{
     text-decoration: none;
     color: #007074 !important;
 }
-input{
+input, select{
     background-color: #EFF0F2 !important;
     border:none !important;
     border-radius: 0 !important;
 }
 .mar{
-    margin-bottom: 3rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 2rem !important;
 }
 .log-image img{
     height: 100vh !important;
 }
 .img-home img{
     height: 90vh;
+}
+@media only screen and (max-width: 800px) {
+.img-contain img{
+    display: none !important;
+}
+.form-contain{
+    width: 100%;
+    margin-top: 15vh;
+}
+.log-body{
+    background-image: url(../assets/img/logIn.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #f8f9fdd2;
+    background-blend-mode: color;
+}
+.sign-body{
+    background-image: url(../assets/img/signUp.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #f8f9fdd2;
+    background-blend-mode: color;
+}
+
 }
