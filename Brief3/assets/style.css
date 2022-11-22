@@ -46,6 +46,7 @@ input, select{
 }
 .log-image img{
     height: 100vh !important;
+    object-fit: cover;
 }
 .img-home img{
     height: 90vh;
