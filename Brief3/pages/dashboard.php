@@ -24,11 +24,8 @@ $admin_row = mysqli_fetch_assoc($result);
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid mx-5">
             <div class="navbar-brand logo"><strong>Origin Game</strong></div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="">
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link fs-4" style="font-family: 'Jockey One', sans-serif; color: #007074;" href="logOut.php"><strong>Log out</strong></a>
