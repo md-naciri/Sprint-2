@@ -85,7 +85,7 @@ function compareUser()
 
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['user_id'] = $row['Id'];
-        header('location: ../pages/dashboard2.php');
+        header('location: ../pages/dashboard.php');
     } else {
         header('location: ../pages/logIn.php');
         $_SESSION['message'] = "Wrong email or password";
@@ -109,7 +109,7 @@ function addProduct()
     move_uploaded_file($photo, '../assets/img/' . $pic_name);
     mysqli_query(conn(), $sql);
     mysqli_close(conn());
-    header('location: ../pages/dashboard2.php');
+    header('location: ../pages/dashboard.php');
 }
 
 function updateProduct()
@@ -125,12 +125,12 @@ function updateProduct()
     if (empty($file)) {
         $sql = "UPDATE product SET Name='$name',Date='$date',Price='$price',Category='$category',Quantity='$quantity' WHERE Id='$id'";
         mysqli_query(conn(), $sql);
-        header('location: ../pages/dashboard2.php');
+        header('location: ../pages/dashboard.php');
     } else {
         $sql = "UPDATE product SET Name='$name',Photo='$file',Date='$date',Price='$price',Category='$category',Quantity='$quantity' WHERE Id='$id'";
         move_uploaded_file($photo, '../assets/img/' . $file);
         mysqli_query(conn(), $sql);
-        header('location: ../pages/dashboard2.php');
+        header('location: ../pages/dashboard.php');
     }
 };
 function deleteProduct()
@@ -138,5 +138,5 @@ function deleteProduct()
     $id = $_POST['id'];
     $sql = "DELETE FROM product WHERE Id='$id'";
     mysqli_query(conn(), $sql);
-    header('location: ../pages/dashboard2.php');
+    header('location: ../pages/dashboard.php');
 };

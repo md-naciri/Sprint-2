@@ -11,52 +11,13 @@ session_start();
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
-
-<?php
-// define variables to empty values  
-$nameErr = $emailErr = $passwordErr = "";
-//Input fields validation  
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    //String Validation  
-    if (empty($_POST["name"])) {
-        $nameErr = "Name is required";
-    } else {
-        $name = input_data($_POST["name"]);
-        // check if name only contains letters and whitespace  
-        if (!preg_match("/^[a-zA-Z\s]*$/", $name) || empty($_POST["name"])) {
-            return false;
-        }
-    }
-
-    //Email Validation  
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
-    } else {
-        $email = input_data($_POST["email"]);
-        // check that the e-mail address is well-formed  
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
-        }
-    }
-}
-function input_data($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-?>
-
 <body class="sign-body" style="overflow: hidden;">
     <div class="row img-contain">
         <div class="col-7 d-flex justify-content-center align-items-center form-contain">
             <div class="row col-12">
                 <div class="col-2"></div>
                 <div class="col-8 ">
-                    <h1 class="text-center mar">Welcome to Origin Game</h1>
+                    <h1 class="text-center mar welcome">Welcome to Origin Game</h1>
                     <form action="config/scripts.php" method="POST" data-parsley-validate>
                         <?php if (isset($_SESSION['message'])) : ?>
                             <div class="alert alert-danger alert-dismissible fade show">

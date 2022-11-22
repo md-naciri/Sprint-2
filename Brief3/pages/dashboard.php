@@ -3,10 +3,10 @@ include('../config/database.php');
 if (!isset($_SESSION['user_id'])) {
     header('location: ../pages/logIn.php');
 }
-$id=$_SESSION['user_id'];
+$id = $_SESSION['user_id'];
 $sql = "SELECT * FROM admin WHERE Id ='$id'";
 $result = mysqli_query(conn(), $sql);
-$row=mysqli_fetch_assoc($result);
+$admin_row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,17 +19,19 @@ $row=mysqli_fetch_assoc($result);
 </head>
 
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <div class="navbar-brand ms-3"><strong>Origin Game</strong></div>
+        <div class="container-fluid mx-5">
+            <div class="navbar-brand logo"><strong>Origin Game</strong></div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="me-3">
+            <div class="">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #007074;" href="logOut.php"><strong>Log out</strong></a>
+                            <a class="nav-link fs-4" style="font-family: 'Jockey One', sans-serif; color: #007074;" href="logOut.php"><strong>Log out</strong></a>
                         </li>
                     </ul>
                 </div>
@@ -38,12 +40,16 @@ $row=mysqli_fetch_assoc($result);
     </nav>
     <div class="d-flex justify-content-between mt-5 mx-5">
         <div>
-            <h3>Welcome <?= $row['Name']; ?></h3>
+            <h3 style="font-family: 'Jockey One', sans-serif;">Welcome <a href="#modal-statistics" data-bs-toggle="modal"><?= $admin_row['Name']; ?></a></h3>
         </div>
         <div>
             <a href="#modal-task" data-bs-toggle="modal" class="btn btn-dark btn-rounded px-4 rounded-1 text-white fw-bold">+ Add Product</a>
         </div>
     </div>
+
+
+
+
     <div class="table-responsive mx-5 mt-5  ">
         <table class="table">
             <thead class="table-dark">
@@ -62,6 +68,9 @@ $row=mysqli_fetch_assoc($result);
                 <?php
                 $sql = "SELECT * FROM product JOIN category ON product.Category=category.C_Id";
                 $result = mysqli_query(conn(), $sql);
+                $product_num = mysqli_num_rows($result);
+                $total_unit = 0;
+                $total_price = 0;
                 while ($row = mysqli_fetch_assoc($result)) :
                 ?>
                     <tr>
@@ -77,14 +86,53 @@ $row=mysqli_fetch_assoc($result);
                             <td><button type="submit" class="btn btn-dark btn-rounded px-4 rounded-1 text-white fw-bold">More...</button></td>
                         </form>
                     </tr>
-                <?php endwhile ?>
+                <?php 
+                $total_price += $row['Price'];
+                $total_unit += $row['Quantity'];
+                endwhile ?>
             </tbody>
         </table>
     </div>
 
 
 
-
+    <div class="modal fade" id="modal-statistics">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <div class="card">
+                        <div class="logo text-center mb-4">
+                            <strong>Origin Game</strong>
+                        </div>
+                        <div class="user text-center">
+                            <div class="profile">
+                                <img src="../assets/img/user_icon.webp" class="rounded-circle" width="80">
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h4 class="mb-0"><?= $admin_row['Name']; ?></h4>
+                            <span class="text-muted d-block mb-2">Youssoufia</span>
+                            <!-- <button class="btn btn-primary btn-sm follow">Follow</button> -->
+                            <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+                                <div class="stats">
+                                    <h6 class="mb-0">Products</h6>
+                                    <span><?= $product_num ?></span>
+                                </div>
+                                <div class="stats">
+                                    <h6 class="mb-0">Units</h6>
+                                    <span><?=$total_unit?></span>
+                                </div>
+                                <div class="stats">
+                                    <h6 class="mb-0">Total price</h6>
+                                    <span><?=$total_price?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

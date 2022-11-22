@@ -61,7 +61,7 @@ $row = mysqli_fetch_assoc($result);
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="dashboard2.php" class="btn btn-white">Cancel</a>
+                        <a href="dashboard.php" class="btn btn-white">Cancel</a>
                         <button type="submit" name="update" class="btn btn-add-color task-action-btn" id="task-save-btn">Update</button>
                         <button type="submit" name="delete" class="btn btn-delete-color task-action-btn" id="task-save-btn">Delete</button>
                     </div>

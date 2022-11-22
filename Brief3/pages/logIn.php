@@ -21,7 +21,7 @@ session_start();
             <div class="row col-12">
                 <div class="col-2"></div>
                 <div class="col-8">
-                    <h1 class="text-center mar">Welcome to Origin Gamer</h1>
+                    <h1 class="text-center mar welcome">Welcome to Origin Gamer</h1>
                     <form action="../config/scripts.php" method="POST" data-parsley-validate>
                         <?php if (isset($_SESSION['message'])) : ?>
                             <div class="alert alert-danger alert-dismissible fade show">
