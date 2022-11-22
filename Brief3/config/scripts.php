@@ -98,7 +98,7 @@ function compareUser()
 
 function addProduct()
 {
-    $name = $_POST['name'];
+    $name = mysqli_real_escape_string(conn(), $_POST['name']);
     $pic_name = $_FILES['photo']['name'];
     $photo = $_FILES['photo']['tmp_name'];
     $date = $_POST['date'];
@@ -116,22 +116,20 @@ function updateProduct()
 {
     $id = $_POST['id'];
     $name = $_POST['name'];
-    $file = $_FILES['photo']['name'];
+    $pic_name = $_FILES['photo']['name'];
     $photo = $_FILES['photo']['tmp_name'];
     $date = $_POST['date'];
     $price = $_POST['price'];
     $category = $_POST['category'];
     $quantity = $_POST['quantity'];
-    if (empty($file)) {
+    if (empty($pic_name)) {
         $sql = "UPDATE product SET Name='$name',Date='$date',Price='$price',Category='$category',Quantity='$quantity' WHERE Id='$id'";
-        mysqli_query(conn(), $sql);
-        header('location: ../pages/dashboard.php');
     } else {
-        $sql = "UPDATE product SET Name='$name',Photo='$file',Date='$date',Price='$price',Category='$category',Quantity='$quantity' WHERE Id='$id'";
-        move_uploaded_file($photo, '../assets/img/' . $file);
-        mysqli_query(conn(), $sql);
-        header('location: ../pages/dashboard.php');
+        $sql = "UPDATE product SET Name='$name',Photo='$pic_name',Date='$date',Price='$price',Category='$category',Quantity='$quantity' WHERE Id='$id'";
+        move_uploaded_file($photo, '../assets/img/' . $pic_name);
     }
+    mysqli_query(conn(), $sql);
+    header('location: ../pages/dashboard.php');
 };
 function deleteProduct()
 {

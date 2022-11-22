@@ -16,7 +16,7 @@ session_start();
         <div class="col-7 d-flex justify-content-center align-items-center form-contain">
             <div class="row col-12">
                 <div class="col-2"></div>
-                <div class="col-8 ">
+                <div class="col-8 form-bg">
                     <h1 class="text-center mar welcome">Welcome to Origin Game</h1>
                     <form action="config/scripts.php" method="POST" data-parsley-validate>
                         <?php if (isset($_SESSION['message'])) : ?>

@@ -75,6 +75,10 @@ input, select{
 .stats span{
     font-size: 20px;
 }
+.form-bg{
+    background-color: #f8f9fdd5;
+    border-radius: 20px;
+}
 /* html , img{
     filter:invert(1);
 } */
@@ -92,8 +96,6 @@ input, select{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-color: #f8f9fdd2;
-    background-blend-mode: color;
 }
 .sign-body{
     background-image: url(../assets/img/signUp.jpg);
@@ -101,8 +103,10 @@ input, select{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-color: #f8f9fdd2;
-    background-blend-mode: color;
+}
+input{
+    border: 1px solid black !important;
+    border-radius: 9px !important;
 }
 
 }
