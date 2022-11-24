@@ -20,7 +20,6 @@ $admin_row = mysqli_fetch_assoc($result);
 
 <body>
 
-
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid mx-5">
             <div class="navbar-brand logo"><strong>Origin Game</strong></div>
@@ -83,9 +82,9 @@ $admin_row = mysqli_fetch_assoc($result);
                             <td><button type="submit" class="btn btn-dark btn-rounded px-4 rounded-1 text-white fw-bold">More...</button></td>
                         </form>
                     </tr>
-                <?php 
-                $total_price += $row['Price'];
-                $total_unit += $row['Quantity'];
+                <?php
+                    $total_price += $row['Price'];
+                    $total_unit += $row['Quantity'];
                 endwhile ?>
             </tbody>
         </table>
@@ -117,11 +116,11 @@ $admin_row = mysqli_fetch_assoc($result);
                                 </div>
                                 <div class="stats">
                                     <h6 class="mb-0">Units</h6>
-                                    <span><?=$total_unit?></span>
+                                    <span><?= $total_unit ?></span>
                                 </div>
                                 <div class="stats">
                                     <h6 class="mb-0">Total price</h6>
-                                    <span><?=$total_price?></span>
+                                    <span><?= $total_price ?></span>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +144,7 @@ $admin_row = mysqli_fetch_assoc($result);
 
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" required/>
+                            <input type="text" name="name" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Photo</label>

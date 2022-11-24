@@ -43,7 +43,6 @@ function check($data, $type)
 
 function saveUser()
 {
-    $connect = conn();
     $full_name = check(input_data($_POST['name']), 'name');
     $email = check(input_data($_POST['email']), 'email');
     $password = check(input_data($_POST['password']), 'password');
@@ -54,17 +53,17 @@ function saveUser()
     }
 
     $sql = "SELECT Email FROM admin WHERE Email='$email'";
-    $result = mysqli_query($connect, $sql);
+    $result = mysqli_query(conn(), $sql);
     if (mysqli_num_rows($result) > 0) {
         header("Location: ../index.php");
         $_SESSION['message'] = "This email is already connected to an account";
     } else {
         $sql = "INSERT INTO admin (Name, Email, Password) VALUES ('$full_name', '$email', '$password')";
-        mysqli_query($connect, $sql);
+        mysqli_query(conn(), $sql);
         header("Location: ../pages/logIn.php");
     }
     // Close connection
-    mysqli_close($connect);
+    mysqli_close(conn());
 }
 
 function compareUser()
@@ -115,7 +114,7 @@ function addProduct()
 function updateProduct()
 {
     $id = $_POST['id'];
-    $name = mysqli_real_escape_string(conn(),$_POST['name']);
+    $name = mysqli_real_escape_string(conn(), $_POST['name']);
     $pic_name = $_FILES['photo']['name'];
     $photo = $_FILES['photo']['tmp_name'];
     $date = $_POST['date'];

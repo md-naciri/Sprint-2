@@ -1,4 +1,5 @@
 <?php session_start();
+include('../config/database.php');
 if (!isset($_SESSION['user_id'])) {
     header('location: ../pages/logIn.php');
 }
@@ -8,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 <head>
     <?php
-    include('../config/database.php');
     include('head.php');
     ?>
     <link rel="stylesheet" href="../assets/style.css">
@@ -21,7 +21,6 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 <body>
-
     <div class="row mt-3">
         <div class="col-1 col-sm-2"></div>
         <div class="col-10 col-sm-8">
@@ -31,7 +30,7 @@ $row = mysqli_fetch_assoc($result);
                         <input name="id" type="hidden" value="<?php echo $row['Id'] ?>">
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" id="" value="<?php echo $row['Name'] ?>" required/>
+                            <input type="text" name="name" class="form-control" id="" value="<?php echo $row['Name'] ?>" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Photo</label>
@@ -71,5 +70,4 @@ $row = mysqli_fetch_assoc($result);
         <div class="col-1 col-sm-2"></div>
     </div>
 </body>
-
 </html>
