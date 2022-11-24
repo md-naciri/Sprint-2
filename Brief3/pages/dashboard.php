@@ -47,7 +47,7 @@ $admin_row = mysqli_fetch_assoc($result);
 
 
 
-    <div class="table-responsive mx-5 mt-5  ">
+    <div class="table-responsive mx-5 mt-5">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -145,7 +145,7 @@ $admin_row = mysqli_fetch_assoc($result);
 
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" id="" />
+                            <input type="text" name="name" class="form-control" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Photo</label>

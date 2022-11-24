@@ -115,7 +115,7 @@ function addProduct()
 function updateProduct()
 {
     $id = $_POST['id'];
-    $name = $_POST['name'];
+    $name = mysqli_real_escape_string(conn(),$_POST['name']);
     $pic_name = $_FILES['photo']['name'];
     $photo = $_FILES['photo']['tmp_name'];
     $date = $_POST['date'];

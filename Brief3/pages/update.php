@@ -31,7 +31,7 @@ $row = mysqli_fetch_assoc($result);
                         <input name="id" type="hidden" value="<?php echo $row['Id'] ?>">
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" id="" value="<?php echo $row['Name'] ?>" />
+                            <input type="text" name="name" class="form-control" id="" value="<?php echo $row['Name'] ?>" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Photo</label>
