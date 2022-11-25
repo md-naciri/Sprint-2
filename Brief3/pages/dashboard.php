@@ -67,6 +67,7 @@ $admin_row = mysqli_fetch_assoc($result);
                 $product_num = mysqli_num_rows($result);
                 $total_unit = 0;
                 $total_price = 0;
+
                 while ($row = mysqli_fetch_assoc($result)) :
                 ?>
                     <tr>
@@ -100,7 +101,7 @@ $admin_row = mysqli_fetch_assoc($result);
                         <div class="logo text-center mb-4">
                             <strong>Origin Game</strong>
                         </div>
-                        <div class="user text-center">
+                        <div class="text-center">
                             <div class="profile">
                                 <img src="../assets/img/user_icon.webp" class="rounded-circle" width="80">
                             </div>
@@ -108,17 +109,16 @@ $admin_row = mysqli_fetch_assoc($result);
                         <div class="mt-5 text-center">
                             <h4 class="mb-0"><?= $admin_row['Name']; ?></h4>
                             <span class="text-muted d-block mb-2">Youssoufia</span>
-                            <!-- <button class="btn btn-primary btn-sm follow">Follow</button> -->
                             <div class="d-flex justify-content-between align-items-center mt-4 px-4">
-                                <div class="stats">
+                                <div class="stat">
                                     <h6 class="mb-0">Products</h6>
                                     <span><?= $product_num ?></span>
                                 </div>
-                                <div class="stats">
+                                <div class="stat">
                                     <h6 class="mb-0">Units</h6>
                                     <span><?= $total_unit ?></span>
                                 </div>
-                                <div class="stats">
+                                <div class="stat">
                                     <h6 class="mb-0">Total price</h6>
                                     <span><?= $total_price ?></span>
                                 </div>

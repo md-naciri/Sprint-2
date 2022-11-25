@@ -46,9 +46,6 @@ input, select{
     height: 100vh !important;
     object-fit: cover;
 }
-/* .img-home img{
-    height: 90vh;
-} */
 .logo{
     font-size: 30px;
     font-family: 'Jockey One', sans-serif;
@@ -71,7 +68,7 @@ input, select{
     width: 80px;
     margin-top:3x;   
 }
-.stats span{
+.stat span{
     font-size: 20px;
 }
 .form-bg{
